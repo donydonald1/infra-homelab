@@ -16,3 +16,11 @@ k3s_server_config:
   disable-network-policy: true
   flannel-backend: none
   secrets-encryption: true
+  kube-apiserver-args:
+    - "service-node-port-range=30000-32767"
+    - "enable-admission-plugins=NodeRestriction,PodSecurityPolicy,Priority"
+    - "disable-admission-plugins=DefaultTolerationSeconds,EventRateLimit,ResourceQuota"
+    - "audit-log-path=/var/log/k3s-audit.log"
+    - "audit-log-maxage=30"
+    - "audit-log-maxbackup=10"
+    - "audit-log-maxsize=100"
